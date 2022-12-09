@@ -1,22 +1,15 @@
 // importing modules
-const express = require("express");
-const http = require("http");
+const app = require("express")();
+const http = require("http").createServer(app);
 const mongoose = require("mongoose");
+const cors = require("cors");
 
-const app = express();
 const port = process.env.PORT || 3000;
-var server = http.createServer(app);
 const Room = require("./models/room");
-var io = require("socket.io")(server,{
-cors: {
-    origin: "*"
-  }
-});
-io.origins((_, callback) => {
-  callback(null, true);
-});
+const io = require("socket.io")(http);
 
 // middle ware
+app.use(cors());
 app.use(express.json());
 
 const DB =
@@ -132,7 +125,9 @@ mongoose
   .catch((e) => {
     console.log(e);
   });
-
+app.get("/", (req, res) => {
+  res.send("Server is up and running");
+});
 server.listen(port, "0.0.0.0", () => {
   console.log(`Server started and running on port ${port}`);
 });
