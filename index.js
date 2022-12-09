@@ -124,9 +124,7 @@ mongoose
   .catch((e) => {
     console.log(e);
   });
-app.get("/", (req, res) => {
-  res.send("Server is up and running");
-});
+
 server.listen(port, "0.0.0.0", () => {
   console.log(`Server started and running on port ${port}`);
 });
