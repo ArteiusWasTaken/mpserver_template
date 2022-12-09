@@ -1,11 +1,13 @@
 // importing modules
-const app = require("express")();
-const http = require("http").createServer(app);
+const express = require("express");
+const http = require("http");
 const mongoose = require("mongoose");
 
+const app = express();
 const port = process.env.PORT || 3000;
+var server = http.createServer(app);
 const Room = require("./models/room");
-const io = require("socket.io")(http);
+var io = require("socket.io")(server);
 
 // middle ware
 app.use(express.json());
