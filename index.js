@@ -8,6 +8,9 @@ const port = process.env.PORT || 3000;
 var server = http.createServer(app);
 const Room = require("./models/room");
 var io = require("socket.io")(server);
+io.origins((_, callback) => {
+  callback(null, true);
+});
 
 // middle ware
 app.use(express.json());
