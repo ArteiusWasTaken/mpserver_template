@@ -9,7 +9,6 @@ var server = http.createServer(app);
 const Room = require("./models/room");
 var io = require("socket.io")(server);
 
-// middle ware
 app.use(express.json());
 
 const DB =
