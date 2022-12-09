@@ -17,7 +17,7 @@ const io = require("socket.io")(http);
 const cors = require("cors");
 const Room = require("./models/room");
 const port = process.env.PORT || 3000;
-
+app.options("*", cors());
 app.use(cors());
 
 const DB =
@@ -141,6 +141,6 @@ app.get("/", (req, res) => {
   res.send(`Server is up and running ${port}`);
 });
 
-http.listen(port, () => {
+http.listen(port, "0.0.0.0", () => {
   console.log(`Listening to ${port}`);
 });
