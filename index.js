@@ -9,7 +9,7 @@ var server = http.createServer(app);
 const Room = require("./models/room");
 var io = require("socket.io")(server);
 
-app.use(cors());
+app.use(express.json());
 
 const DB =
   "mongodb+srv://arteius:1C2Iz73HbqV5J6AN@cluster0.p9vr0vx.mongodb.net/?retryWrites=true&w=majority";
