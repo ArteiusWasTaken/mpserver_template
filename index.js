@@ -7,7 +7,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 var server = http.createServer(app);
 const Room = require("./models/room");
-var io = require("socket.io")(server);
+var io = require("socket.io")(server,{
+cors: {
+    origin: "*"
+  }
+});
 io.origins((_, callback) => {
   callback(null, true);
 });
