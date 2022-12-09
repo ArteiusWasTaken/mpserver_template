@@ -19,7 +19,9 @@ const Room = require("./models/room");
 const port = process.env.PORT || 3000;
 app.options("*", cors());
 app.use(cors());
-
+io.origins((_, callback) => {
+  callback(null, true);
+});
 const DB =
   "mongodb+srv://arteius:1C2Iz73HbqV5J6AN@cluster0.p9vr0vx.mongodb.net/?retryWrites=true&w=majority";
 
