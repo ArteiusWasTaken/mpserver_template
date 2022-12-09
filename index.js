@@ -138,7 +138,7 @@ mongoose
 //   console.log(`Server started and running on port ${port}`);
 // });
 app.get("/", (req, res) => {
-  res.send("Server is up and running");
+  res.send(`Server is up and running ${port}`);
 });
 
 http.listen(port, () => {
