@@ -12,8 +12,8 @@
 // app.use(express.json());
 const mongoose = require("mongoose");
 const app = require("express")();
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
+const https = require("https").createServer(app);
+const io = require("socket.io")(https);
 const cors = require("cors");
 const Room = require("./models/room");
 const port = process.env.PORT || 3000;
@@ -141,6 +141,6 @@ app.get("/", (req, res) => {
   res.send(`Server is up and running ${port}`);
 });
 
-http.listen(port, "0.0.0.0", () => {
+https.listen(port, "0.0.0.0", () => {
   console.log(`Listening to ${port}`);
 });
