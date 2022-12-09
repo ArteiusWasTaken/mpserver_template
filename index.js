@@ -1,23 +1,15 @@
-// // importing modules
-// const express = require("express");
-// const http = require("http");
-
-// const app = express();
-// const port = process.env.PORT || 3000;
-// var server = http.createServer(app);
-// const Room = require("./models/room");
-// var io = require("socket.io")(server);
-
-// // middle ware
-// app.use(express.json());
-const app = require("express")();
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
+// importing modules
+const express = require("express");
+const http = require("http");
 const cors = require("cors");
-const Room = require("./models/room");
+const app = express();
 const port = process.env.PORT || 3000;
+var server = http.createServer(app);
+const Room = require("./models/room");
+var io = require("socket.io")(server);
 
-app.use(cors());
+// middle ware
+app.use(express.json());
 
 const DB =
   "mongodb+srv://arteius:1C2Iz73HbqV5J6AN@cluster0.p9vr0vx.mongodb.net/?retryWrites=true&w=majority";
