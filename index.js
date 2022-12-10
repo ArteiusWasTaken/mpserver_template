@@ -1,24 +1,24 @@
-// // importing modules
-// const express = require("express");
-// const http = require("http");
-
-// const app = express();
-// const port = process.env.PORT || 3000;
-// var server = http.createServer(app);
-// const Room = require("./models/room");
-// var io = require("socket.io")(server);
-
-// // middle ware
-// app.use(express.json());
+// importing modules
+const express = require("express");
+const http = require("http");
 const mongoose = require("mongoose");
-const app = require("express")();
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
-const cors = require("cors");
-const Room = require("./models/room");
+const app = express();
 const port = process.env.PORT || 3000;
-app.options("*", cors());
-app.use(cors());
+var server = http.createServer(app);
+const Room = require("./models/room");
+var io = require("socket.io")(server);
+
+// middle ware
+app.use(express.json());
+// const mongoose = require("mongoose");
+// const app = require("express")();
+// const http = require("http").createServer(app);
+// const io = require("socket.io")(http);
+// const cors = require("cors");
+// const Room = require("./models/room");
+// const port = process.env.PORT || 3000;
+// app.options("*", cors());
+// app.use(cors());
 
 const DB =
   "mongodb+srv://arteius:1C2Iz73HbqV5J6AN@cluster0.p9vr0vx.mongodb.net/?retryWrites=true&w=majority";
@@ -134,13 +134,13 @@ mongoose
     console.log(e);
   });
 
-// server.listen(port, "0.0.0.0", () => {
-//   console.log(`Server started and running on port ${port}`);
-// });
+server.listen(port, "0.0.0.0", () => {
+  console.log(`Server started and running on port ${port}`);
+});
 app.get("/", (req, res) => {
   res.send(`Server is up and running ${port}`);
 });
 
-http.listen(port, "0.0.0.0", () => {
-  console.log(`Listening to ${port}`);
-});
+// http.listen(port, "0.0.0.0", () => {
+//   console.log(`Listening to ${port}`);
+// });
